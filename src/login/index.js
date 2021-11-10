@@ -28,7 +28,10 @@ export default function Login() {
 
         if (logged && !logged.email && !logged.password) {
             setDisplay('flex');
+            return;
         }
+        console.log(logged);
+        return navigation.navigate('Presentation', logged);
     };
 
     const handleOnPressRegister = () => {
