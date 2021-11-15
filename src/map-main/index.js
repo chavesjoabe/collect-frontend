@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
-import MapView from 'react-native-maps';
+import { StyleSheet, View, TextInput, Image, Text } from 'react-native';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import FooterMenu from '../shared/components/footer-menu';
 import * as Location from 'expo-location';
+import { styles } from './styles';
 
 export default function MapMain() {
     const [location, setLocation] = useState(null);
@@ -40,41 +41,20 @@ export default function MapMain() {
                 initialRegion={origin}
                 showsUserLocation={true}
                 loadingEnabled={true}
-            />
+            >
+                <Marker
+                    coordinate={{
+                        latitude: -23.8045571,
+                        longitude: -46.5449407,
+                    }}
+                    pinColor="black"
+                >
+                    <Callout>
+                        <Text>I'm here</Text>
+                    </Callout>
+                </Marker>
+            </MapView>
             <FooterMenu />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '93%',
-        width: '100%',
-        marginTop: '7%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        borderColor: '#c4c4c4',
-    },
-    inputContainer: {
-        width: '90%',
-        height: '10%',
-        borderColor: '#c4c4c4',
-        borderRadius: 10,
-        borderWidth: 1,
-        padding: 15,
-        fontSize: 18,
-        marginTop: '5%',
-        position: 'absolute',
-        top: 0,
-        backgroundColor: '#fff',
-        zIndex: 2,
-    },
-    mapContainer: {
-        width: '100%',
-        height: '100%',
-    },
-});
