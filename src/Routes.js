@@ -21,11 +21,11 @@ function Routes() {
                     },
                 }}
             >
-                <stack.Screen name="MapMain" component={MapMain} />
                 <stack.Screen name="Home" component={Home} />
                 <stack.Screen name="Login" component={Login} />
                 <stack.Screen name="UserRegister" component={UserRegister} />
                 <stack.Screen name="Presentation" component={Presentation} />
+                <stack.Screen name="MapMain" component={MapMain} />
             </stack.Navigator>
         </NavigationContainer>
     );

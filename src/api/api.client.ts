@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class ApiClient {
     request = axios.create({
-        baseURL: 'http://localhost:3000',
+        baseURL: 'https://collect-fiap-backend.herokuapp.com',
     });
     async createSession(userData) {
         const { data } = await this.request.post('/session', userData);
@@ -10,6 +10,10 @@ class ApiClient {
     }
     async createNewUser(user) {
         const { data } = await this.request.post('/users', user);
+        return data;
+    }
+    async fetchCollectPoints() {
+        const { data } = await this.request.get('/collect-points');
         return data;
     }
 }

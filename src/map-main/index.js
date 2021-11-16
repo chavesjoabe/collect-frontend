@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, TextInput, Image, Text } from 'react-native';
-import MapView, { Callout, Marker } from 'react-native-maps';
-import FooterMenu from '../shared/components/footer-menu';
 import * as Location from 'expo-location';
+import React, { useEffect, useState } from 'react';
+import { Text, TextInput, View } from 'react-native';
+import MapView, { Callout, Marker } from 'react-native-maps';
+import apiClient from '../api/api.client';
+import FooterMenu from '../shared/components/footer-menu';
 import { styles } from './styles';
 
 export default function MapMain() {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const [origin, setOrigin] = useState(null);
+    const [points, setPoints] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -28,6 +30,14 @@ export default function MapMain() {
             });
         })();
     }, []);
+
+    useEffect(() => {
+        (async () => {
+            const collectPoints = await apiClient.fetchCollectPoints();
+            setPoints(collectPoints);
+        })();
+    }, []);
+
     return (
         <View style={styles.container}>
             <TextInput
@@ -42,17 +52,20 @@ export default function MapMain() {
                 showsUserLocation={true}
                 loadingEnabled={true}
             >
-                <Marker
-                    coordinate={{
-                        latitude: -23.8045571,
-                        longitude: -46.5449407,
-                    }}
-                    pinColor="black"
-                >
-                    <Callout>
-                        <Text>I'm here</Text>
-                    </Callout>
-                </Marker>
+                {points.map((point) => (
+                    <Marker
+                        key={point._id}
+                        coordinate={{
+                            latitude: point.latitude,
+                            longitude: point.longitude,
+                        }}
+                        pinColor="black"
+                    >
+                        <Callout>
+                            <Text>I'm here</Text>
+                        </Callout>
+                    </Marker>
+                ))}
             </MapView>
             <FooterMenu />
         </View>
