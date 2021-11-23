@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import colorConstants from '../shared/constants/color.constants';
 
 export const styles = StyleSheet.create({
     container: {
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     formText: {
         fontSize: 20,
         fontWeight: '500',
-        color: '#0C7C68',
+        color: colorConstants.mainGreenCollor,
     },
     dangerText: (state = 'none') => ({
         fontSize: 15,
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
     inputContainer: {
         width: '100%',
         height: 75,
-        borderColor: '#c4c4c4',
+        borderColor: colorConstants.grayBorders,
         borderRadius: 10,
         borderWidth: 1,
         padding: 15,
@@ -57,13 +58,13 @@ export const styles = StyleSheet.create({
     modalMainText: {
         fontSize: 25,
         fontWeight: '300',
-        color: '#0C7C68',
+        color: colorConstants.mainGreenCollor,
         marginTop: '15%',
         textAlign: 'center',
     },
     modalLinkText: {
         fontSize: 30,
-        color: '#0C7C68',
+        color: colorConstants.mainGreenCollor,
         marginTop: '25%',
     },
 });

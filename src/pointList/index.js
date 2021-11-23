@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Alert, StyleSheet, Text, ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import apiClient from '../api/api.client';
 import HeaderComponent from '../shared/components/header-component';
+import { styles } from './pointList.styles';
 
 export default function PointList() {
     const [points, setPoints] = useState([]);
@@ -13,7 +14,6 @@ export default function PointList() {
             try {
                 const points = await apiClient.getAllPoints();
                 setPoints(points);
-                console.log(points);
             } catch (error) {
                 Alert.alert(error.message);
             }
@@ -26,14 +26,14 @@ export default function PointList() {
         return navigation.navigate('MapMain');
     };
     return (
-        <ScrollView contentContainerStyle={{ width: '100%' }}>
-            <HeaderComponent
-                title="Pontos de Coleta"
-                closeButtonCallback={handlePressCloseButton}
-            />
-            {points.map((point) => (
-                <Card key={point._id} style={{ height: 400, marginTop: 20 }}>
-                    <Card.Content>
+        <ScrollView contentContainerStyle={styles.container}>
+            <>
+                <HeaderComponent
+                    title="Pontos de Coleta"
+                    closeButtonCallback={handlePressCloseButton}
+                />
+                {points.map((point) => (
+                    <Card key={point._id} style={styles.card}>
                         <MapView
                             initialRegion={{
                                 latitude: point.latitude,
@@ -43,7 +43,7 @@ export default function PointList() {
                             }}
                             scrollEnabled={false}
                             loadingEnabled={true}
-                            style={{ width: '100%', height: '80%' }}
+                            style={styles.map}
                         >
                             <Marker
                                 pinColor="black"
@@ -53,21 +53,14 @@ export default function PointList() {
                                 }}
                             />
                         </MapView>
-                    </Card.Content>
-                    <Card.Title
-                        title={point.name}
-                        subtitle={point.description}
-                    ></Card.Title>
-                </Card>
-            ))}
+
+                        <Card.Title
+                            title={point.name}
+                            subtitle={point.description}
+                        ></Card.Title>
+                    </Card>
+                ))}
+            </>
         </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

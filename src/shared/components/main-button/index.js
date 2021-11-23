@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableHighlight } from 'react-native';
+import colorConstants from '../../constants/color.constants';
+import { styles } from './mainButton.styles';
 
 const props = {
     text: String,
@@ -21,27 +23,3 @@ export default function MainButton(props) {
         </TouchableHighlight>
     );
 }
-
-const styles = StyleSheet.create({
-    btnNormal: {
-        width: '90%',
-        height: 80,
-        borderRadius: 15,
-        backgroundColor: '#19A98F',
-        alignItems: 'center',
-        padding: 28,
-    },
-    btnPressed: {
-        width: '90%',
-        height: 80,
-        borderRadius: 15,
-        backgroundColor: '#258573',
-        alignItems: 'center',
-        padding: 28,
-    },
-    btnText: {
-        fontSize: 20,
-        color: '#FFF',
-        fontWeight: '600',
-    },
-});
