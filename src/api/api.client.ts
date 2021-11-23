@@ -24,5 +24,11 @@ class ApiClient {
         );
         return data;
     }
+
+    async getAllPoints() {
+        const { data } = await this.request.get('/collect-points');
+
+        return data;
+    }
 }
 export default new ApiClient();

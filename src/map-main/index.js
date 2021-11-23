@@ -27,6 +27,10 @@ export default function MapMain({ navigation }) {
         );
     };
 
+    const listItenCallback = () => {
+        return navigation.navigate('PointList');
+    };
+
     const handleOnPressBackButton = () => {
         if (
             screenState ===
@@ -126,7 +130,10 @@ export default function MapMain({ navigation }) {
                 )}
             </MapView>
             {screenState === 1 ? (
-                <FooterMenu plusIconCallBack={plusIconCallback} />
+                <FooterMenu
+                    plusIconCallBack={plusIconCallback}
+                    listItenCallback={listItenCallback}
+                />
             ) : (
                 <FAB
                     icon="plus"
