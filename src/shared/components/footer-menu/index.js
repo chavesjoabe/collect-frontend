@@ -1,37 +1,39 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { styles } from './footer-menu.styles';
 
-export default function FooterMenu() {
+const props = {
+    listItenCallback: Function,
+    plusIconCallBack: Function,
+    profileCallback: Function,
+};
+
+export default function FooterMenu(props) {
     return (
         <View style={styles.container}>
-            <Image source={require('../../../assets/home.png')} />
-            <Image source={require('../../../assets/chat.png')} />
-            <Image source={require('../../../assets/profile.png')} />
+            <TouchableOpacity
+                onPress={() => {
+                    props.listItenCallback();
+                }}
+            >
+                <Image source={require('../../../assets/list-icon.png')} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => {
+                    props.plusIconCallBack();
+                }}
+            >
+                <Image source={require('../../../assets/plus_icon.png')} />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => {
+                    props.profileCallback();
+                }}
+            >
+                <Image source={require('../../../assets/profile.png')} />
+            </TouchableOpacity>
         </View>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: 80,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingRight: '10%',
-        paddingLeft: '10%',
-        position: 'absolute',
-        bottom: 0,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 8,
-        },
-        shadowOpacity: 0.46,
-        shadowRadius: 11.14,
-
-        elevation: 17,
-        zIndex: 4,
-        backgroundColor: '#fff',
-    },
-});

@@ -16,5 +16,13 @@ class ApiClient {
         const { data } = await this.request.get('/collect-points');
         return data;
     }
+
+    async createCollectPoint(collectPoint) {
+        const { data } = await this.request.post(
+            '/collect-points',
+            collectPoint
+        );
+        return data;
+    }
 }
 export default new ApiClient();

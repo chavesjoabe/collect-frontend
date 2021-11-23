@@ -6,6 +6,7 @@ import Login from './login';
 import UserRegister from './user-register';
 import Presentation from './presentation';
 import MapMain from './map-main';
+import PointRegistration from './pointRegistration';
 
 const stack = createNativeStackNavigator();
 
@@ -25,6 +26,10 @@ function Routes() {
                 <stack.Screen name="Login" component={Login} />
                 <stack.Screen name="UserRegister" component={UserRegister} />
                 <stack.Screen name="Presentation" component={Presentation} />
+                <stack.Screen
+                    name="PointRegistration"
+                    component={PointRegistration}
+                />
                 <stack.Screen name="MapMain" component={MapMain} />
             </stack.Navigator>
         </NavigationContainer>

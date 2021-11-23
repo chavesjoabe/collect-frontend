@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import apiClient from '../api/api.client';
 import MainButton from '../shared/components/main-button';
-import { styles } from './styles';
+import { styles } from './user-register.styles';
 
 export default function UserRegister() {
     const [name, setName] = useState('');

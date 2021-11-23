@@ -3,13 +3,13 @@ import React from 'react';
 import { Image, Text, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MainButton from '../shared/components/main-button';
-import { styles } from './styles';
+import { styles } from './presentation.styles';
 
-export default function Presentation() {
+export default function Presentation({ route }) {
     const navigation = useNavigation();
 
     const handleOnPress = () => {
-        navigation.navigate('MapMain');
+        navigation.navigate('MapMain', route.params);
     };
 
     const { width, height } = useWindowDimensions();

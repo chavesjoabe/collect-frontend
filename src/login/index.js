@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import apiClient from '../api/api.client';
 import MainButton from '../shared/components/main-button';
-import { styles } from './styles';
+import { styles } from './login.styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import storageConstants from '../shared/constants/storage.constants';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -29,7 +31,12 @@ export default function Login() {
             setDisplay('flex');
             return;
         }
-        return navigation.navigate('Presentation', logged);
+        try {
+            await AsyncStorage.setItem(storageConstants.USER_ID, logged._id);
+            return navigation.navigate('Presentation', logged);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const handleOnPressRegister = () => {

@@ -9,7 +9,7 @@ import {
     useWindowDimensions,
 } from 'react-native';
 import MainButton from '../shared/components/main-button';
-import { styles } from './styles';
+import { styles } from './home.styles';
 
 export default function Home() {
     const navigation = useNavigation();
