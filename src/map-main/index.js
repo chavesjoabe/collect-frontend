@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
@@ -30,6 +29,11 @@ export default function MapMain({ navigation }) {
     const listItenCallback = () => {
         return navigation.navigate('PointList');
     };
+
+    const profileCallback = async () => {
+        const userId = await AsyncStorage.getItem(storageConstants.USER_ID);
+        return navigation.navigate('User');
+    }
 
     const handleOnPressBackButton = () => {
         if (
@@ -133,13 +137,19 @@ export default function MapMain({ navigation }) {
                 <FooterMenu
                     plusIconCallBack={plusIconCallback}
                     listItenCallback={listItenCallback}
+                    profileCallback={profileCallback}
                 />
             ) : (
-                <FAB
-                    icon="plus"
-                    style={styles.FABplus}
-                    onPress={handleOnPressFabPlus}
-                />
+                <View style={styles.newPointView}>
+                    <Text style={styles.newPointViewText}>
+                        Segure e arraste o PIN para alterar o endereço
+                    </Text>
+                    <FAB
+                        icon="plus"
+                        style={styles.FABplus}
+                        onPress={handleOnPressFabPlus}
+                    />
+                </View>
             )}
         </View>
     );

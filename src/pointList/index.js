@@ -25,6 +25,7 @@ export default function PointList() {
     const handlePressCloseButton = () => {
         return navigation.navigate('MapMain');
     };
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <>

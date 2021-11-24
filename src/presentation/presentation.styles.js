@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -7,6 +6,7 @@ export const styles = StyleSheet.create({
     },
     contentContainer: {
         alignItems: 'center',
+        flexGrow: 1
     },
     logo: {
         height: '40%',
@@ -30,5 +30,6 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: '15%',
         color: '#0F6D84',
+        flexGrow: 1
     },
 });

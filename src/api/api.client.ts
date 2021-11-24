@@ -30,5 +30,17 @@ class ApiClient {
 
         return data;
     }
+
+    async getPointById(id) {
+        const { data } = await this.request.get(`/users/${id}/collect-points`);
+
+        return data;
+    }
+
+    async getUserData(id) {
+        const { data } = await this.request.get(`/users/${id}`);
+        console.log(id)
+        return data;
+    }
 }
 export default new ApiClient();

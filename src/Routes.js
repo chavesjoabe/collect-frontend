@@ -8,6 +8,7 @@ import Presentation from './presentation';
 import MapMain from './map-main';
 import PointRegistration from './pointRegistration';
 import PointList from './pointList';
+import User from './user';
 
 const stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ function Routes() {
                 />
                 <stack.Screen name="MapMain" component={MapMain} />
                 <stack.Screen name="PointList" component={PointList} />
+                <stack.Screen name="User" component={User} />
             </stack.Navigator>
         </NavigationContainer>
     );

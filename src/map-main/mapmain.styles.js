@@ -57,12 +57,21 @@ export const styles = StyleSheet.create({
     FABplus: {
         width: 60,
         height: 60,
-        position: 'absolute',
         color: '#fff',
-        alignItems: 'center',
-        bottom: 0,
-        right: 0,
-        margin: 30,
-        zIndex: 2,
     },
+    newPointView: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        zIndex: 2,
+        padding: 20,
+        backgroundColor: '#fff'
+    },
+    newPointViewText: {
+        fontSize: 12
+    }
 });

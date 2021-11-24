@@ -13,10 +13,11 @@ export default function Presentation({ route }) {
     };
 
     const { width, height } = useWindowDimensions();
+
     return (
         <ScrollView
             contentContainerStyle={styles.contentContainer}
-            style={{ ...styles.container, height: height }}
+            style={{ ...styles.container, height: height}}
         >
             <Image
                 source={require('../assets/presentation_img.png')}
