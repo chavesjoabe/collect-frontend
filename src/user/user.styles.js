@@ -35,5 +35,27 @@ export const styles = StyleSheet.create({
     mapContainer: {
         width: '100%',
         height: '100%',
+        flex: 1
+    },
+    modal: {
+        width: '80%',
+        height: '70%',
+        backgroundColor: 'white',
+        padding: 20,
+        margin: '10%',
+        flex: 1,
+        alignItems: 'center',
+    },
+    modalMainText: {
+        fontSize: 25,
+        fontWeight: '300',
+        color: colorConstants.mainGreenCollor,
+        marginTop: '15%',
+        textAlign: 'center',
+    },
+    modalLinkText: {
+        fontSize: 30,
+        color: colorConstants.mainGreenCollor,
+        marginTop: '25%',
     },
 });

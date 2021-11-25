@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        marginTop: '15%',
+        marginTop: '10%',
     },
     formContainer: {
         width: '90%',

@@ -32,7 +32,10 @@ export default function MapMain({ navigation }) {
 
     const profileCallback = async () => {
         const userId = await AsyncStorage.getItem(storageConstants.USER_ID);
-        return navigation.navigate('User');
+        return navigation.navigate('User', {
+            userId,
+            updatePoints
+        });
     }
 
     const handleOnPressBackButton = () => {
@@ -52,6 +55,7 @@ export default function MapMain({ navigation }) {
             return navigation.navigate('PointRegistration', {
                 userId,
                 coordinates: pin,
+                updatePoints
             });
         } catch (error) {
             console.log(error);
@@ -77,20 +81,19 @@ export default function MapMain({ navigation }) {
         })();
     }, []);
 
+    const updatePoints = async () => {
+        const collectPoints = await apiClient.fetchCollectPoints();
+        setPoints(collectPoints);
+    }
+
     useEffect(() => {
         (async () => {
-            const collectPoints = await apiClient.fetchCollectPoints();
-            setPoints(collectPoints);
+            await updatePoints()
         })();
     }, []);
 
     return (
         <View style={styles.container}>
-            <FAB
-                icon="arrow-left-thick"
-                style={styles.backButton}
-                onPress={handleOnPressBackButton}
-            />
             <MapView
                 style={styles.mapContainer}
                 initialRegion={origin}

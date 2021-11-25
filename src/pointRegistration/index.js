@@ -21,8 +21,13 @@ export default function PointRegistration({ route }) {
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
     const navigation = useNavigation();
+    const [error, setError] = useState(false);
 
     const handleOnPressRegisterButton = async () => {
+        if (!pointName || !pointDescription) {
+            setError(true)
+            return
+        }
         const collectPoint = {
             name: pointName,
             description: pointDescription,
@@ -40,7 +45,8 @@ export default function PointRegistration({ route }) {
         }
     };
 
-    const handleOnPressOk = () => {
+    const handleOnPressOk = async () => {
+        if (route.params?.updatePoints) await route.params.updatePoints()
         return navigation.navigate('MapMain');
     };
 
@@ -88,6 +94,32 @@ export default function PointRegistration({ route }) {
                     />
                 </KeyboardAvoidingView>
             </ScrollView>
+            <Provider>
+                <Portal style={{ height: '100%' }}>
+                    <Modal
+                        visible={error}
+                        contentContainerStyle={styles.modal}
+                        dismissable={false}
+                    >
+                        <Image
+                            source={require('../assets/warning-check.png')}
+                            width={139}
+                            height={139}
+                        />
+                        <Text style={styles.modalMainText}>
+                            Você deve preencher
+                            {'\n'}
+                            todos os campos
+                        </Text>
+                        <Text
+                            style={styles.modalLinkText}
+                            onPress={() => setError(false)}
+                        >
+                            OK
+                        </Text>
+                    </Modal>
+                </Portal>
+            </Provider>
             <Provider>
                 <Portal style={{ height: '100%' }}>
                     <Modal

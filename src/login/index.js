@@ -15,8 +15,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import storageConstants from '../shared/constants/storage.constants';
 
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('ryan1@fiap.com');
+    const [password, setPassword] = useState('123');
     const [display, setDisplay] = useState('none');
     const navigation = useNavigation();
 
@@ -76,6 +76,7 @@ export default function Login() {
                         autoCapitalize="none"
                         placeholder="SENHA"
                         keyboardType="default"
+                        secureTextEntry={true}
                         style={styles.inputContainer}
                         onChangeText={(value) => {
                             setPassword(value);

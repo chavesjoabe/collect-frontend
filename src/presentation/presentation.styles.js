@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     logo: {
         height: '40%',
         resizeMode: 'contain',
-        marginTop: '15%',
+        marginTop: '10%',
     },
     divider: {
         color: '#c4c4c4',
@@ -30,6 +30,5 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: '15%',
         color: '#0F6D84',
-        flexGrow: 1
     },
 });

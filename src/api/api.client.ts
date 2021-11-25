@@ -25,6 +25,21 @@ class ApiClient {
         return data;
     }
 
+    async updateUser(id, userData) {
+        const { data } = await this.request.put(
+            `/users/${id}`,
+            userData
+        );
+        return data;
+    }
+
+    async removePoint(id) {
+        const { data } = await this.request.delete(
+            `/collect-points/${id}`,
+        );
+        return data;
+    }
+
     async getAllPoints() {
         const { data } = await this.request.get('/collect-points');
 
@@ -39,7 +54,11 @@ class ApiClient {
 
     async getUserData(id) {
         const { data } = await this.request.get(`/users/${id}`);
-        console.log(id)
+        return data;
+    }
+
+    async getUserPoints(id) {
+        const { data } = await this.request.get(`/users/${id}/collect-points`);
         return data;
     }
 }

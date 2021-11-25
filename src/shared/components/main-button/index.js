@@ -17,7 +17,10 @@ export default function MainButton(props) {
                 props.callback();
             }}
             underlayColor="#7BA9EE"
-            style={styles.btnNormal}
+            style={{
+                ...styles.btnNormal,
+                ...props?.style ?? {}
+            }}
         >
             <Text style={styles.btnText}> {props.text} </Text>
         </TouchableHighlight>
